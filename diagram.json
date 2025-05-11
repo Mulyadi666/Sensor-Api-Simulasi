@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-mini", "id": "bb1", "top": 219.4, "left": 496.8, "attrs": {} },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -47.4, "left": 383.4, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 41.4,
+      "left": 785.2,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 165.6,
+      "left": 856.2,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 213.9, "left": 275.8, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 390.4,
+      "left": 504.8,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "uno:GND.3", "uno:GND.2", "black", [ "v0" ] ],
+    [ "uno:GND.2", "bb1:13t.a", "black", [ "v19.1", "h61.5" ] ],
+    [ "uno:5V", "bb1:5t.a", "red", [ "v0" ] ],
+    [ "bb1:5t.b", "gas1:VCC", "red", [ "v0", "h-67.2", "v19.2" ] ],
+    [ "gas1:GND", "bb1:13t.b", "black", [ "h0" ] ],
+    [ "gas1:AOUT", "uno:A0", "green", [ "h67.2", "v-57.6", "h111.4" ] ],
+    [ "ldr1:VCC", "bb1:5t.c", "red", [ "h-105.6", "v163.2" ] ],
+    [ "ldr1:GND", "bb1:13t.c", "black", [ "h-96", "v182.8" ] ],
+    [ "ldr1:DO", "uno:8", "green", [ "h-105.6", "v-133.8", "h-124.8" ] ],
+    [ "lcd1:VCC", "bb1:5t.d", "red", [ "h-19.2", "v-76.7", "h57.6" ] ],
+    [ "bb1:13t.d", "lcd1:GND", "black", [ "v124.8", "h-124.8", "v38.4" ] ],
+    [ "lcd1:SCL", "uno:A5", "yellow", [ "h-38.4", "v-258.9", "h172.8" ] ],
+    [ "uno:A4", "lcd1:SDA", "orange", [ "v38.3", "h-168.6", "v259.2" ] ],
+    [ "bz1:1", "bb1:13t.e", "black", [ "v9.6", "h0", "v9.6" ] ],
+    [ "bz1:2", "uno:9", "red", [ "v9.6", "h-192.4", "v-336", "h-153.6" ] ]
+  ],
+  "dependencies": {}
+}
